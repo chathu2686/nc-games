@@ -1,0 +1,13 @@
+.navBar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem 33vw;
+  background-color: #eaeaea;
+}
+
+.navLink {
+  width: 25%;
+}

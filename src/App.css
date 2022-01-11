@@ -1,3 +1,10 @@
 .App {
   text-align: center;
+  background-color: #eeeee4;
+}
+
+.mainHeader {
+  background-color: #154c79;
+  margin: 0;
+  color: white;
 }

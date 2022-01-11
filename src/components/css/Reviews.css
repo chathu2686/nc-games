@@ -1,0 +1,9 @@
+.reviewList {
+  width: 50vw;
+  margin-left: 25vw;
+  border-radius: 2%;
+  margin-bottom: 5px;
+  background-color: #2596be;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: white;
+}

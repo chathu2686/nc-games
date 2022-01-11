@@ -1,6 +1,5 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Reviews from "./components/Reviews";
 import Review from "./components/Review";
@@ -12,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header />
+        <h1 className="mainHeader">Welcome to NC-Games</h1>
         <Navbar />
         <Routes>
           <Route path="/" element={<Reviews />} />
