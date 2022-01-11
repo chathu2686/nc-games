@@ -1,0 +1,8 @@
+.user-block {
+  background-color: rgba(39, 88, 245, 0.5);
+  border: 2px solid black;
+  width: fit-content;
+  margin-bottom: 5px;
+  margin-left: 33vw;
+  border-radius: 2%;
+}

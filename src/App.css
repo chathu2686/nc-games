@@ -1,10 +1,9 @@
 .App {
   text-align: center;
-  background-color: #eeeee4;
 }
 
 .mainHeader {
-  background-color: #154c79;
   margin: 0;
+  background-color: rgba(39, 88, 245, 0.5);
   color: white;
 }
