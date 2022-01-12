@@ -7,7 +7,6 @@ import Users from "./components/Users";
 import Comments from "./components/Comments";
 import Nopath from "./components/Nopath";
 import { useState } from "react";
-import Login from "./components/Login";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -22,8 +21,10 @@ function App() {
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/reviews/:review_id" element={<Review />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/reviews/:review_id/comments" element={<Comments />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/reviews/:review_id/comments"
+            element={<Comments userName={userName} />}
+          />
           <Route path="*" element={<Nopath />} />
         </Routes>
       </div>

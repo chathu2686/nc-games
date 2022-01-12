@@ -1,43 +1,17 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./css/Navbar.css";
-import { getUsers } from "../utils/api";
+import { useLogin } from "../hooks/useLogin";
 
 const Navbar = ({ userName, setUserName }) => {
-  const [userNameInput, setUserNameInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
-  const [userNameError, setUserNameError] = useState(false);
-
-  const handleUserNameValue = (event) => {
-    setUserNameInput(event.target.value);
-  };
-
-  const handlePasswordValue = (event) => {
-    setPasswordInput(event.target.value);
-  };
-
-  const handleLogin = (event) => {
-    event.preventDefault();
-    setUserNameError(false);
-    getUsers().then((usersFromApi) => {
-      if (
-        usersFromApi
-          .map((user) => (user = user.username))
-          .indexOf(userNameInput) !== -1 &&
-        passwordInput !== ""
-      ) {
-        setUserName(userNameInput);
-      } else {
-        setUserNameError(true);
-      }
-      setUserNameInput("");
-      setPasswordInput("");
-    });
-  };
-
-  const handleLogOut = () => {
-    setUserName("");
-  };
+  const {
+    handleLogOut,
+    handleLogin,
+    userNameInput,
+    handleUserNameValue,
+    handlePasswordValue,
+    passwordInput,
+    userNameError,
+  } = useLogin(userName, setUserName);
 
   return (
     <div className="nav-bar">

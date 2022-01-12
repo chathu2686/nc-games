@@ -1,30 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import { getReview, updateReviewVotes } from "../utils/api";
+import { Link } from "react-router-dom";
+import { useReview } from "../hooks/useReview";
 
 const Review = () => {
-  const [singleReview, setSingleReview] = useState({});
-  const [voteCount, setVoteCount] = useState(singleReview.votes);
-  const [isError, setIsError] = useState(false);
-
-  const { review_id } = useParams();
-
-  useEffect(() => {
-    getReview(review_id).then((reviewFromApi) => {
-      setSingleReview(reviewFromApi);
-      setVoteCount(reviewFromApi.votes);
-      console.log(reviewFromApi);
-    });
-  }, [review_id]);
-
-  const addReviewVote = () => {
-    setIsError(false);
-    setVoteCount((currVotes) => currVotes + 1);
-    updateReviewVotes(review_id).catch(() => {
-      setVoteCount((currVotes) => currVotes - 1);
-      setIsError(true);
-    });
-  };
+  const { singleReview, addReviewVote, voteCount, isError } = useReview();
 
   return (
     <section>
@@ -45,8 +23,7 @@ const Review = () => {
       <p>{singleReview.review_body}</p>
       <br />
       <button onClick={addReviewVote}>
-        Upvote({voteCount}){" "}
-        {isError ? <p>Sorry, there was a problem!</p> : null}
+        Vote({voteCount}) {isError ? <p>Sorry, there was a problem!</p> : null}
       </button>
       <Link to={`/reviews/${singleReview.review_id}/comments`}>
         View Comments({singleReview.comment_count})

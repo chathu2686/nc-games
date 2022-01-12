@@ -1,36 +1,38 @@
-import React, { useEffect, useState } from "react";
-import { getReviewList, getCategories } from "../utils/api";
+import { useReviewList } from "../hooks/useReviewList";
 import { Link } from "react-router-dom";
 import "./css/Reviews.css";
 
 const Reviews = () => {
-  const [reviewList, setReviewList] = useState([]);
-  const [categoryList, setCategoryList] = useState([]);
-  const [filterCategory, setFilterCategory] = useState("");
-  const [sortBy, setSortBy] = useState("");
+  const { selectCategory, categoryList, selectSortBy, reviewList } =
+    useReviewList();
 
-  useEffect(() => {
-    getCategories().then((categoriesFromApi) => {
-      setCategoryList(categoriesFromApi);
-    });
-  }, []);
+  // const [reviewList, setReviewList] = useState([]);
+  // const [categoryList, setCategoryList] = useState([]);
+  // const [filterCategory, setFilterCategory] = useState("");
+  // const [sortBy, setSortBy] = useState("");
 
-  const selectCategory = (event) => {
-    setFilterCategory(event.target.value);
-    console.log(event.target.value);
-  };
+  // useEffect(() => {
+  //   getCategories().then((categoriesFromApi) => {
+  //     setCategoryList(categoriesFromApi);
+  //   });
+  // }, []);
 
-  const selectSortBy = (event) => {
-    setSortBy(event.target.value);
-    console.log(event.target.value);
-  };
+  // const selectCategory = (event) => {
+  //   setFilterCategory(event.target.value);
+  //   console.log(event.target.value);
+  // };
 
-  useEffect(() => {
-    getReviewList(filterCategory, sortBy).then((reviewsFromApi) => {
-      console.log(reviewsFromApi);
-      setReviewList(reviewsFromApi);
-    });
-  }, [filterCategory, sortBy]);
+  // const selectSortBy = (event) => {
+  //   setSortBy(event.target.value);
+  //   console.log(event.target.value);
+  // };
+
+  // useEffect(() => {
+  //   getReviewList(filterCategory, sortBy).then((reviewsFromApi) => {
+  //     console.log(reviewsFromApi);
+  //     setReviewList(reviewsFromApi);
+  //   });
+  // }, [filterCategory, sortBy]);
 
   return (
     <section>
@@ -51,15 +53,14 @@ const Reviews = () => {
       </select>
       <label htmlFor="sortBySelector">Sort By</label>
       <select onChange={selectSortBy} name="sortBySelector" id="sortBySelector">
-        <option value="">None</option>
         <option value="created_at">Created at</option>
         <option value="comment_count">Comment Count</option>
         <option value="votes">Votes</option>
       </select>
       {reviewList.map((review) => {
         return (
-          <div key={review.review_id} className="reviewList">
-            <h2>Title: {review.title}</h2>
+          <div key={review.review_id} className="single-review">
+            <h2>{review.title}</h2>
             <p>Created on: {review.created_at}</p>
             <p>Category: {review.category}</p>
             <p>Owner: {review.owner}</p>
