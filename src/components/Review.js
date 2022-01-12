@@ -25,10 +25,8 @@ const Review = ({ setIsLoading, setIsError }) => {
       <br />
       <p>{singleReview.review_body}</p>
       <br />
-      <button onClick={addReviewVote}>
-        Vote({voteCount}){" "}
-        {isVotingError ? <p>Sorry, there was a problem!</p> : null}
-      </button>
+      <button onClick={addReviewVote}>Vote({voteCount}) </button>
+      {isVotingError ? <span>Sorry, there was a problem!</span> : null}
       <Link to={`/reviews/${singleReview.review_id}/comments`}>
         View Comments({singleReview.comment_count})
       </Link>

@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getComments, postComment, deleteComment } from "../utils/api";
 import { useCommentsList } from "../hooks/useCommentsList";
 import "./css/Comments.css";
 
@@ -8,7 +6,6 @@ const Comments = ({ userName, setIsLoading, setIsError }) => {
   const { review_id } = useParams();
 
   const {
-    commentSubmitted,
     postButtonClicked,
     commentBody,
     handleBodyChange,
