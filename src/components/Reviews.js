@@ -2,37 +2,9 @@ import { useReviewList } from "../hooks/useReviewList";
 import { Link } from "react-router-dom";
 import "./css/Reviews.css";
 
-const Reviews = () => {
+const Reviews = ({ setIsLoading, setIsError }) => {
   const { selectCategory, categoryList, selectSortBy, reviewList } =
-    useReviewList();
-
-  // const [reviewList, setReviewList] = useState([]);
-  // const [categoryList, setCategoryList] = useState([]);
-  // const [filterCategory, setFilterCategory] = useState("");
-  // const [sortBy, setSortBy] = useState("");
-
-  // useEffect(() => {
-  //   getCategories().then((categoriesFromApi) => {
-  //     setCategoryList(categoriesFromApi);
-  //   });
-  // }, []);
-
-  // const selectCategory = (event) => {
-  //   setFilterCategory(event.target.value);
-  //   console.log(event.target.value);
-  // };
-
-  // const selectSortBy = (event) => {
-  //   setSortBy(event.target.value);
-  //   console.log(event.target.value);
-  // };
-
-  // useEffect(() => {
-  //   getReviewList(filterCategory, sortBy).then((reviewsFromApi) => {
-  //     console.log(reviewsFromApi);
-  //     setReviewList(reviewsFromApi);
-  //   });
-  // }, [filterCategory, sortBy]);
+    useReviewList(setIsLoading, setIsError);
 
   return (
     <section>

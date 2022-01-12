@@ -2,14 +2,22 @@ import React, { useState, useEffect } from "react";
 import { getUsers } from "../utils/api";
 import "./css/Users.css";
 
-const Users = () => {
+const Users = ({ setIsLoading, setIsError }) => {
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
-    getUsers().then((usersFromApi) => {
-      setUserList(usersFromApi);
-      console.log(usersFromApi);
-    });
+    setIsLoading(true);
+    setIsError(false);
+    getUsers()
+      .then((usersFromApi) => {
+        setUserList(usersFromApi);
+        console.log(usersFromApi);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsError(true);
+        setIsLoading(false);
+      });
   }, []);
   return (
     <section>

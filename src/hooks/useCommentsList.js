@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { getComments, postComment, deleteComment } from "../utils/api";
 
-export const useCommentsList = (userName, review_id) => {
+export const useCommentsList = (
+  userName,
+  review_id,
+  setIsLoading,
+  setIsError
+) => {
   const [commentsList, setCommentsList] = useState([]);
   const [postButtonClicked, setPostButtonClicked] = useState(false);
   const [commentBody, setCommentBody] = useState("");
@@ -11,11 +15,19 @@ export const useCommentsList = (userName, review_id) => {
 
   useEffect(() => {
     setPostButtonClicked(false);
-    getComments(review_id).then((commentsFromApi) => {
-      console.log(commentsFromApi);
-      setCommentsList(commentsFromApi);
-      setCommentDeleted(false);
-    });
+    setIsLoading(true);
+    setIsError(false);
+    getComments(review_id)
+      .then((commentsFromApi) => {
+        console.log(commentsFromApi);
+        setCommentsList(commentsFromApi);
+        setCommentDeleted(false);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsError(true);
+        setIsLoading(false);
+      });
   }, [review_id, userName, commentSubmitted, commentDeleted]);
 
   const openCommentForm = () => {

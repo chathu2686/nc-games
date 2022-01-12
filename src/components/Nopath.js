@@ -1,6 +1,7 @@
 import React from "react";
 
-const Nopath = () => {
+const Nopath = ({ setIsLoading }) => {
+  setIsLoading(false);
   return <div>Error! Non-existent path!!!</div>;
 };
 

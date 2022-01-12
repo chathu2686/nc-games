@@ -4,7 +4,7 @@ import { getComments, postComment, deleteComment } from "../utils/api";
 import { useCommentsList } from "../hooks/useCommentsList";
 import "./css/Comments.css";
 
-const Comments = ({ userName }) => {
+const Comments = ({ userName, setIsLoading, setIsError }) => {
   const { review_id } = useParams();
 
   const {
@@ -16,12 +16,11 @@ const Comments = ({ userName }) => {
     openCommentForm,
     commentsList,
     handleCommentDelete,
-  } = useCommentsList(userName, review_id);
+  } = useCommentsList(userName, review_id, setIsLoading, setIsError);
 
   return (
     <section>
       <h1>Comments</h1>
-      {commentSubmitted ? <p>Comment posted successfully!</p> : null}
       {postButtonClicked ? (
         <form>
           <textarea
@@ -41,7 +40,7 @@ const Comments = ({ userName }) => {
       {commentsList.map((comment) => {
         return (
           <div key={comment.comment_id} className="comment-item">
-            <h2>Comment: {comment.body}</h2>
+            <h2>{comment.body}</h2>
             <br />
             Comment ID: {comment.comment_id}
             <br />

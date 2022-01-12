@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { useReview } from "../hooks/useReview";
 
-const Review = () => {
-  const { singleReview, addReviewVote, voteCount, isError } = useReview();
+const Review = ({ setIsLoading, setIsError }) => {
+  const { singleReview, addReviewVote, voteCount, isVotingError } = useReview(
+    setIsLoading,
+    setIsError
+  );
 
   return (
     <section>
@@ -23,7 +26,8 @@ const Review = () => {
       <p>{singleReview.review_body}</p>
       <br />
       <button onClick={addReviewVote}>
-        Vote({voteCount}) {isError ? <p>Sorry, there was a problem!</p> : null}
+        Vote({voteCount}){" "}
+        {isVotingError ? <p>Sorry, there was a problem!</p> : null}
       </button>
       <Link to={`/reviews/${singleReview.review_id}/comments`}>
         View Comments({singleReview.comment_count})

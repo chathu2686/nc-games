@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
 import { getReviewList, getCategories } from "../utils/api";
 
-export const useReviewList = () => {
+export const useReviewList = (setIsLoading, setIsError) => {
   const [reviewList, setReviewList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
   const [filterCategory, setFilterCategory] = useState("");
   const [filterSortBy, setFilterSortBy] = useState("");
 
   useEffect(() => {
-    getCategories().then((categoriesFromApi) => {
-      setCategoryList(categoriesFromApi);
-    });
+    setIsError(false);
+    getCategories()
+      .then((categoriesFromApi) => {
+        setCategoryList(categoriesFromApi);
+      })
+      .catch(() => {
+        setIsError(true);
+      });
   }, []);
 
   const selectCategory = (event) => {
@@ -24,10 +29,18 @@ export const useReviewList = () => {
   };
 
   useEffect(() => {
-    getReviewList(filterCategory, filterSortBy).then((reviewsFromApi) => {
-      console.log(reviewsFromApi);
-      setReviewList(reviewsFromApi);
-    });
+    setIsLoading(true);
+    setIsError(false);
+    getReviewList(filterCategory, filterSortBy)
+      .then((reviewsFromApi) => {
+        console.log(reviewsFromApi);
+        setReviewList(reviewsFromApi);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsError(true);
+        setIsLoading(false);
+      });
   }, [filterCategory, filterSortBy]);
 
   return { selectCategory, categoryList, selectSortBy, reviewList };
