@@ -5,7 +5,7 @@ import { UserNameContext } from "../contexts/UserNameContext";
 import { LoadingContext } from "../contexts/LoadingContext";
 import { ErrorContext } from "../contexts/ErrorContext";
 
-const Comments = ({ review_id, isCommentsClocked }) => {
+const Comments = ({ review_id, isCommentsClicked }) => {
   const { userName } = useContext(UserNameContext);
   const { setIsLoading } = useContext(LoadingContext);
   const { setIsError } = useContext(ErrorContext);
@@ -23,7 +23,7 @@ const Comments = ({ review_id, isCommentsClocked }) => {
     review_id,
     setIsLoading,
     setIsError,
-    isCommentsClocked
+    isCommentsClicked
   );
 
   return (

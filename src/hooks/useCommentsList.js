@@ -49,15 +49,18 @@ export const useCommentsList = (
 
   const handlePostComment = (event) => {
     event.preventDefault();
+    setIsError(false);
     if (commentBody.length >= 10) {
-      postComment(review_id, userName, commentBody).then(
-        (newCommentfromApi) => {
+      postComment(review_id, userName, commentBody)
+        .then((newCommentfromApi) => {
           console.log(newCommentfromApi);
           setCommentSubmitted(true);
           setPostButtonClicked(false);
           setCommentBody("");
-        }
-      );
+        })
+        .catch(() => {
+          setIsError(true);
+        });
     }
   };
 

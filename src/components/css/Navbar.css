@@ -5,9 +5,43 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding: 1rem 5px;
-  background-color: lightcoral;
+  color: whitesmoke;
+  margin-bottom: 1rem;
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
 }
 
-.nav-link {
-  width: 33%;
+.logged-in {
+  font-size: xx-large;
+}
+
+form {
+  display: inline-block;
+}
+
+@media only screen and (max-width: 600px) {
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.review-link,
+.users-link {
+  color: whitesmoke;
+  font-size: xx-large;
+  text-decoration: none;
+}
+
+label {
+  font-weight: bold;
+  font-size: large;
+}
+
+#login {
+  margin-left: 30%;
+}
+
+.logged-in {
+  margin: 0;
 }

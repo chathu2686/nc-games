@@ -19,38 +19,46 @@ const Navbar = () => {
 
   return (
     <div className="nav-bar">
-      <Link className="nav-link" to="/reviews">
+      <Link className="review-link" to="/reviews">
         Reviews
       </Link>
-      <Link className="nav-link" to="/users">
+      <Link className="users-link" to="/users">
         Users
       </Link>
       {userName ? (
-        <>
-          <p>logged in as: {userName}</p>{" "}
+        <div className="login-box">
+          <p className="logged-in">logged in as: {userName}</p>{" "}
           <button onClick={handleLogOut}>Log out</button>
-        </>
+        </div>
       ) : (
-        <form onSubmit={handleLogin}>
-          <label htmlFor="userName">UserName</label>
-          <input
-            name="addUserName"
-            id="addUserName"
-            value={userNameInput}
-            onChange={handleUserNameValue}
-          ></input>
+        <form onSubmit={handleLogin} className="login-box">
           <div>
-            <label htmlFor="password">Password </label>
+            <label className="login-labels" htmlFor="add-user-name">
+              Username
+            </label>
+            <input
+              name="add-user-name"
+              id="add-user-name"
+              value={userNameInput}
+              onChange={handleUserNameValue}
+            ></input>
+          </div>
+          <div>
+            <label className="login-labels" htmlFor="add-pass-word">
+              Password{" "}
+            </label>
             <input
               type={"password"}
-              name="addPassword"
-              id="addPassword"
+              name="add-pass-word"
+              id="add-pass-word"
               onChange={handlePasswordValue}
               value={passwordInput}
             ></input>
           </div>
-          <button>Login</button>
-          {userNameError && <p>Sorry, Username and/or Password invalid!</p>}
+          <div>
+            <button id="login">Login</button>
+            {userNameError && <p>Sorry, Username and/or Password invalid!</p>}
+          </div>
         </form>
       )}
     </div>
