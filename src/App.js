@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <h1 className="main-header">NC-Gamessssssssss</h1>
+        <h1 className="main-header">NC-Gamexxxxxxxxxxxxxx</h1>
         <Navbar />
         <Loader />
         <Error />
