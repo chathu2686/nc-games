@@ -1,8 +1,14 @@
 import { useReviewList } from "../hooks/useReviewList";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { LoadingContext } from "../contexts/LoadingContext";
+import { ErrorContext } from "../contexts/ErrorContext";
 import "./css/Reviews.css";
 
-const Reviews = ({ setIsLoading, setIsError }) => {
+const Reviews = () => {
+  const { setIsLoading } = useContext(LoadingContext);
+  const { setIsError } = useContext(ErrorContext);
+
   const { selectCategory, categoryList, selectSortBy, reviewList } =
     useReviewList(setIsLoading, setIsError);
 

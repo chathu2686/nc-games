@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import "./css/Navbar.css";
 import { useLogin } from "../hooks/useLogin";
+import { useContext } from "react";
+import { UserNameContext } from "../contexts/UserNameContext";
 
-const Navbar = ({ userName, setUserName }) => {
+const Navbar = () => {
+  const { userName, setUserName } = useContext(UserNameContext);
+
   const {
     handleLogOut,
     handleLogin,

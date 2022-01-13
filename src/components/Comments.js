@@ -1,9 +1,14 @@
-import { useParams, Link } from "react-router-dom";
 import { useCommentsList } from "../hooks/useCommentsList";
 import "./css/Comments.css";
+import { useContext } from "react";
+import { UserNameContext } from "../contexts/UserNameContext";
+import { LoadingContext } from "../contexts/LoadingContext";
+import { ErrorContext } from "../contexts/ErrorContext";
 
-const Comments = ({ userName, setIsLoading, setIsError }) => {
-  const { review_id } = useParams();
+const Comments = ({ review_id, isCommentsClocked }) => {
+  const { userName } = useContext(UserNameContext);
+  const { setIsLoading } = useContext(LoadingContext);
+  const { setIsError } = useContext(ErrorContext);
 
   const {
     postButtonClicked,
@@ -13,7 +18,13 @@ const Comments = ({ userName, setIsLoading, setIsError }) => {
     openCommentForm,
     commentsList,
     handleCommentDelete,
-  } = useCommentsList(userName, review_id, setIsLoading, setIsError);
+  } = useCommentsList(
+    userName,
+    review_id,
+    setIsLoading,
+    setIsError,
+    isCommentsClocked
+  );
 
   return (
     <section>
@@ -59,8 +70,6 @@ const Comments = ({ userName, setIsLoading, setIsError }) => {
           </div>
         );
       })}
-
-      <Link to={`/reviews/${review_id}`}>Back to Review</Link>
     </section>
   );
 };

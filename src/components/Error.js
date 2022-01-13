@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { ErrorContext } from "../contexts/ErrorContext";
 import React from "react";
 
-const Error = ({ isError }) => {
+const Error = () => {
+  const { isError } = useContext(ErrorContext);
+
   return (
     <div>
       {isError ? (

@@ -1,15 +1,27 @@
 import { Link } from "react-router-dom";
 import { useReview } from "../hooks/useReview";
+import Comments from "./Comments";
+import { useContext } from "react";
+import { LoadingContext } from "../contexts/LoadingContext";
+import { ErrorContext } from "../contexts/ErrorContext";
 
-const Review = ({ setIsLoading, setIsError }) => {
-  const { singleReview, addReviewVote, voteCount, isVotingError } = useReview(
-    setIsLoading,
-    setIsError
-  );
+const Review = () => {
+  const { setIsLoading } = useContext(LoadingContext);
+  const { setIsError } = useContext(ErrorContext);
+
+  const {
+    singleReview,
+    addReviewVote,
+    voteCount,
+    isVotingError,
+    review_id,
+    handleViewComments,
+    isCommentsClicked,
+  } = useReview(setIsLoading, setIsError);
 
   return (
     <section>
-      <h1>{singleReview.title}</h1>
+      <h1 id="top">{singleReview.title}</h1>
       <br />
       <img
         src={singleReview.review_img_url}
@@ -18,18 +30,21 @@ const Review = ({ setIsLoading, setIsError }) => {
         height="500"
       />
       <br />
+      <p>{singleReview.review_body}</p>
       <p>Created on: {singleReview.created_at}</p>
       <p>Category: {singleReview.category}</p>
       <p>Owner: {singleReview.owner}</p>
       <p>Designer: {singleReview.designer}</p>
       <br />
-      <p>{singleReview.review_body}</p>
       <br />
       <button onClick={addReviewVote}>Vote({voteCount}) </button>
       {isVotingError ? <span>Sorry, there was a problem!</span> : null}
-      <Link to={`/reviews/${singleReview.review_id}/comments`}>
+      <button onClick={handleViewComments}>
         View Comments({singleReview.comment_count})
-      </Link>
+      </button>{" "}
+      {isCommentsClicked ? (
+        <Comments review_id={review_id} isCommentsClicked={isCommentsClicked} />
+      ) : null}
       <Link to={`/reviews`}>Back to Reviews</Link>
     </section>
   );

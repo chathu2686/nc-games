@@ -5,7 +5,8 @@ export const useCommentsList = (
   userName,
   review_id,
   setIsLoading,
-  setIsError
+  setIsError,
+  isCommentsClicked
 ) => {
   const [commentsList, setCommentsList] = useState([]);
   const [postButtonClicked, setPostButtonClicked] = useState(false);
@@ -28,7 +29,13 @@ export const useCommentsList = (
         setIsError(true);
         setIsLoading(false);
       });
-  }, [review_id, userName, commentSubmitted, commentDeleted]);
+  }, [
+    review_id,
+    userName,
+    commentSubmitted,
+    commentDeleted,
+    isCommentsClicked,
+  ]);
 
   const openCommentForm = () => {
     if (userName !== "") {

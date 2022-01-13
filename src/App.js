@@ -11,53 +11,27 @@ import Error from "./components/Error";
 import "./App.css";
 
 function App() {
-  const [userName, setUserName] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   return (
     <BrowserRouter>
       <div className="App">
-        <h1 className="mainHeader">Welcome to NC-Games</h1>
-        <Navbar userName={userName} setUserName={setUserName} />
-        <Loader isLoading={isLoading} />
-        <Error isError={isError} />
+        <h1 className="main-header">Welcome to NC-Games</h1>
+        <Navbar />
+        <Loader />
+        <Error />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Reviews setIsLoading={setIsLoading} setIsError={setIsError} />
-            }
-          />
-          <Route
-            path="/reviews"
-            element={
-              <Reviews setIsLoading={setIsLoading} setIsError={setIsError} />
-            }
-          />
-          <Route
-            path="/reviews/:review_id"
-            element={
-              <Review setIsLoading={setIsLoading} setIsError={setIsError} />
-            }
-          />
-          <Route
-            path="/users"
-            element={
-              <Users setIsLoading={setIsLoading} setIsError={setIsError} />
-            }
-          />
-          <Route
+          <Route path="/" element={<Reviews />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/reviews/:review_id" element={<Review />} />
+          <Route path="/users" element={<Users />} />
+          {/* <Route
             path="/reviews/:review_id/comments"
             element={
-              <Comments
-                userName={userName}
-                setIsLoading={setIsLoading}
-                setIsError={setIsError}
-              />
+              <Comments setIsLoading={setIsLoading} setIsError={setIsError} />
             }
-          />
-          <Route path="*" element={<Nopath setIsLoading={setIsLoading} />} />
+          /> */}
+          <Route path="*" element={<Nopath />} />
         </Routes>
       </div>
     </BrowserRouter>

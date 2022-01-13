@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getUsers } from "../utils/api";
+import { LoadingContext } from "../contexts/LoadingContext";
+import { ErrorContext } from "../contexts/ErrorContext";
 import "./css/Users.css";
 
-const Users = ({ setIsLoading, setIsError }) => {
+const Users = () => {
+  const { setIsLoading } = useContext(LoadingContext);
+  const { setIsError } = useContext(ErrorContext);
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
@@ -28,7 +32,12 @@ const Users = ({ setIsLoading, setIsError }) => {
             <br />
             UserName: {user.username}
             <br />
-            <img src={user.avatar_url} alt="user" width="300" height="200" />
+            <img
+              src={user.avatar_url}
+              alt="user"
+              width="200px"
+              height="100px"
+            />
           </div>
         );
       })}
