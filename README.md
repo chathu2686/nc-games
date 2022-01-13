@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Welcome to NC-Games website!!!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Purpose
 
-## Available Scripts
+NC-Games is a social games content rating, and discussion website. This website was built as my front-end project to make CRUD application from a front end perspective.
 
-In the project directory, you can run:
+This application retrieves/alters data from the back end API which was built as part of my backend project with the purpose of accessing game-data programmatically.
 
-### `npm start`
+## Link to the hosted version of the project ===> https://placeholder.fake
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Link to the hosted version of the back-end project ===> https://thar-first-game.herokuapp.com/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Link to the back-end repository of the project ===> https://github.com/chathu2686/thar_first_game
 
-### `npm test`
+## Steps to run application locally
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Step 1 - Fork repo
 
-### `npm run build`
+- Fork the following repository to your own own Git account.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+https://github.com/chathu2686/thar_first_game.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Step 2 - Clone repo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Open your terminal and navigate to a directory where you want the repo cloned into and type the following command into the terminal replacing {Github username} with your Github account username.
 
-### `npm run eject`
+```bash
+$ git clone https://github.com/{Github username}/thar_first_game.git
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Step 3 - Install NPM packages
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Please type the following command on your terminal to install the dependencies/dev-dependencies.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+$ npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Step 4 - Run the app in development mode
 
-## Learn More
+- Now, in the project directory terminal, you can run:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Runs the app in the development mode.
 
-### Code Splitting
+- Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- The page will reload when you make changes.
