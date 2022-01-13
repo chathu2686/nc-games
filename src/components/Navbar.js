@@ -39,14 +39,16 @@ const Navbar = () => {
             value={userNameInput}
             onChange={handleUserNameValue}
           ></input>
-          <label htmlFor="password">Password</label>
-          <input
-            type={"password"}
-            name="addPassword"
-            id="addPassword"
-            onChange={handlePasswordValue}
-            value={passwordInput}
-          ></input>
+          <div>
+            <label htmlFor="password">Password </label>
+            <input
+              type={"password"}
+              name="addPassword"
+              id="addPassword"
+              onChange={handlePasswordValue}
+              value={passwordInput}
+            ></input>
+          </div>
           <button>Login</button>
           {userNameError && <p>Sorry, Username and/or Password invalid!</p>}
         </form>
