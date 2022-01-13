@@ -6,7 +6,7 @@ NC-Games is a social games content rating, and discussion website. This website 
 
 This application retrieves/alters data from the back end API which was built as part of my backend project with the purpose of accessing game-data programmatically.
 
-## Link to the hosted version of the project ===> https://placeholder.fake
+## Link to the hosted version of the project ===> https://nc-games.vercel.app/
 
 ## Link to the hosted version of the back-end project ===> https://thar-first-game.herokuapp.com/
 
