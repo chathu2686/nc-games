@@ -22,7 +22,7 @@ const Users = () => {
         setIsError(true);
         setIsLoading(false);
       });
-  }, []);
+  });
   return (
     <section>
       {userList.map((user) => {
