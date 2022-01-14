@@ -22,26 +22,34 @@ const Review = () => {
 
   return (
     <section className="review">
-      <h1 id="top">{singleReview.title}</h1>
+      <h1 id="review-title">{singleReview.title}</h1>
       <img
         src={singleReview.review_img_url}
         alt="review"
-        width="600"
-        height="500"
+        className="review-image"
       />
-      <p>{singleReview.review_body}</p>
-      <p>Created on: {singleReview.created_at}</p>
-      <p>Category: {singleReview.category}</p>
-      <p>Owner: {singleReview.owner}</p>
-      <p>Designer: {singleReview.designer}</p>
-      <button onClick={addReviewVote}>Vote({voteCount}) </button>
-      {isVotingError ? <span>Sorry, there was a problem!</span> : null}
-      <button onClick={handleViewComments}>
-        View Comments({singleReview.comment_count})
-      </button>{" "}
-      {isCommentsClicked ? (
-        <Comments review_id={review_id} isCommentsClicked={isCommentsClicked} />
-      ) : null}
+      <p className="review-body">{singleReview.review_body}</p>
+      <div className="review-info">
+        <p>Created on: {singleReview.created_at}</p>
+        <p>Category: {singleReview.category}</p>
+        <p>Owner: {singleReview.owner}</p>
+        <p>Designer: {singleReview.designer}</p>
+      </div>
+      <div className="vote-comment">
+        <button onClick={addReviewVote}>Vote({voteCount}) </button>
+        {isVotingError ? <span>Sorry, there was a problem!</span> : null}
+        <button onClick={handleViewComments}>
+          View Comments({singleReview.comment_count})
+        </button>{" "}
+      </div>
+      <div className="com-list">
+        {isCommentsClicked ? (
+          <Comments
+            review_id={review_id}
+            isCommentsClicked={isCommentsClicked}
+          />
+        ) : null}
+      </div>
       <Link to={`/reviews`}>Back to Reviews</Link>
     </section>
   );

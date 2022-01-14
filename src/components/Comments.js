@@ -27,7 +27,7 @@ const Comments = ({ review_id, isCommentsClicked }) => {
   );
 
   return (
-    <section>
+    <section className="comment-list">
       <h1>Comments</h1>
       {postButtonClicked ? (
         <form>

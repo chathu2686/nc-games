@@ -28,10 +28,8 @@ const Users = () => {
       {userList.map((user) => {
         return (
           <div key={user.username} className="user-block">
+            <div className="username">{user.username}</div>
             Name: {user.name}
-            <br />
-            UserName: {user.username}
-            <br />
             <img src={user.avatar_url} alt="user" className="user-avatar" />
           </div>
         );
