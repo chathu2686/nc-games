@@ -7,6 +7,7 @@ export const useReview = (setIsLoading, setIsError) => {
   const [voteCount, setVoteCount] = useState(singleReview.votes);
   const [isVotingError, setIsVotingError] = useState(false);
   const [isCommentsClicked, setIsCommentsClicked] = useState(false);
+  const [isVoteClicked, setIsVoteClicked] = useState(false);
 
   const { review_id } = useParams();
 
@@ -27,11 +28,26 @@ export const useReview = (setIsLoading, setIsError) => {
   }, [review_id]);
 
   const addReviewVote = () => {
+    setIsVoteClicked(true);
     setIsVotingError(false);
     setVoteCount((currVotes) => currVotes + 1);
-    updateReviewVotes(review_id).catch(() => {
+
+    updateReviewVotes(review_id, 1).catch(() => {
       setVoteCount((currVotes) => currVotes - 1);
       setIsVotingError(true);
+      setIsVoteClicked(false);
+    });
+  };
+
+  const removeReviewVote = () => {
+    setIsVoteClicked(false);
+    setIsVotingError(false);
+    setVoteCount((currVotes) => currVotes - 1);
+
+    updateReviewVotes(review_id, -1).catch(() => {
+      setVoteCount((currVotes) => currVotes + 1);
+      setIsVotingError(true);
+      setIsVoteClicked(true);
     });
   };
 
@@ -41,6 +57,8 @@ export const useReview = (setIsLoading, setIsError) => {
 
   return {
     singleReview,
+    removeReviewVote,
+    isVoteClicked,
     addReviewVote,
     voteCount,
     isVotingError,

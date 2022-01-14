@@ -4,39 +4,62 @@
   padding-right: 5%;
   display: grid;
   justify-content: space-around;
-  color: white;
+  color: grey;
   font-weight: bolder;
 }
 
-#review-title {
+.review-title {
   color: #42f5aa;
   font-size: xx-large;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
 }
 
 .review-image {
   height: auto;
   width: 90%;
   margin-left: 5%;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
 }
 
-#review-title,
-.review-image,
-.review-info,
 .review-body {
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  padding: 15px;
+  font-size: x-large;
+  color: gray;
+  justify-content: space-around;
+  margin-top: 0;
+  margin-bottom: 0;
+  /* background-color: gray; */
+  color: white;
+}
+
+.review-title,
+.review-image,
+.review-info {
   margin-top: 0;
   margin-bottom: 0;
   padding: 0;
-  border: 2px solid gray;
-  border-radius: 2%;
 }
 
-@media only screen and (min-width: 600px) {
-  .review {
-    /* grid-template-columns: 100% 50% 50% 100% 100%; */
+.review-info {
+  border: 2px solid white;
+  color: white;
+}
+
+@media only screen and (min-width: 800px) {
+  .review-middle {
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
 
   .review-image {
-    width: 25%;
+    width: 100%;
+    height: 100%;
     margin-left: 0;
   }
 }

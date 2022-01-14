@@ -27,7 +27,7 @@ const Navbar = () => {
       </Link>
       {userName ? (
         <div className="login-box">
-          <p className="logged-in">logged in as: {userName}</p>{" "}
+          <p className="logged-in">Logged in as: {userName}</p>{" "}
           <button onClick={handleLogOut}>Log out</button>
         </div>
       ) : (

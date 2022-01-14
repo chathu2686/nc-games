@@ -40,9 +40,9 @@ export const getCategories = () => {
   });
 };
 
-export const updateReviewVotes = (review_id) => {
+export const updateReviewVotes = (review_id, votes) => {
   return gameDataApi
-    .patch(`/reviews/${review_id}`, { inc_votes: 1 })
+    .patch(`/reviews/${review_id}`, { inc_votes: votes })
     .then((res) => {
       return res.data.updatedReview;
     });

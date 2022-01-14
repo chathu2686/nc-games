@@ -12,7 +12,9 @@ const Review = () => {
 
   const {
     singleReview,
+    removeReviewVote,
     addReviewVote,
+    isVoteClicked,
     voteCount,
     isVotingError,
     review_id,
@@ -22,13 +24,15 @@ const Review = () => {
 
   return (
     <section className="review">
-      <h1 id="review-title">{singleReview.title}</h1>
-      <img
-        src={singleReview.review_img_url}
-        alt="review"
-        className="review-image"
-      />
-      <p className="review-body">{singleReview.review_body}</p>
+      <h1 className="review-title">{singleReview.title}</h1>
+      <div className="review-middle">
+        <img
+          src={singleReview.review_img_url}
+          alt="review"
+          className="review-image"
+        />
+        <p className="review-body">{singleReview.review_body}</p>
+      </div>
       <div className="review-info">
         <p>Created on: {singleReview.created_at}</p>
         <p>Category: {singleReview.category}</p>
@@ -36,7 +40,11 @@ const Review = () => {
         <p>Designer: {singleReview.designer}</p>
       </div>
       <div className="vote-comment">
-        <button onClick={addReviewVote}>Vote({voteCount}) </button>
+        {isVoteClicked ? (
+          <button onClick={removeReviewVote}>Unvote({voteCount})</button>
+        ) : (
+          <button onClick={addReviewVote}>Vote({voteCount}) </button>
+        )}
         {isVotingError ? <span>Sorry, there was a problem!</span> : null}
         <button onClick={handleViewComments}>
           View Comments({singleReview.comment_count})
@@ -50,7 +58,9 @@ const Review = () => {
           />
         ) : null}
       </div>
-      <Link to={`/reviews`}>Back to Reviews</Link>
+      <Link className="go-back" to={`/reviews`}>
+        Back to Reviews
+      </Link>
     </section>
   );
 };
