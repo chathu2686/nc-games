@@ -4,6 +4,7 @@ import Comments from "./Comments";
 import { useContext } from "react";
 import { LoadingContext } from "../contexts/LoadingContext";
 import { ErrorContext } from "../contexts/ErrorContext";
+import "./css/Review.css";
 
 const Review = () => {
   const { setIsLoading } = useContext(LoadingContext);
@@ -20,23 +21,19 @@ const Review = () => {
   } = useReview(setIsLoading, setIsError);
 
   return (
-    <section>
+    <section className="review">
       <h1 id="top">{singleReview.title}</h1>
-      <br />
       <img
         src={singleReview.review_img_url}
         alt="review"
         width="600"
         height="500"
       />
-      <br />
       <p>{singleReview.review_body}</p>
       <p>Created on: {singleReview.created_at}</p>
       <p>Category: {singleReview.category}</p>
       <p>Owner: {singleReview.owner}</p>
       <p>Designer: {singleReview.designer}</p>
-      <br />
-      <br />
       <button onClick={addReviewVote}>Vote({voteCount}) </button>
       {isVotingError ? <span>Sorry, there was a problem!</span> : null}
       <button onClick={handleViewComments}>

@@ -1,8 +1,27 @@
 .user-block {
   background-color: rgba(39, 88, 245, 0.5);
-  border: 2px solid black;
-  width: min-content;
+  width: 275px;
+  margin: 20px 5px 20px 5px;
   margin-bottom: 20px;
-  margin-left: 40%;
+  padding: 5px;
+  border-radius: 4%;
+}
+
+.user-avatar {
+  height: 200px;
+  width: 250px;
   border-radius: 2%;
+}
+
+@media only screen and (min-width: 600px) {
+  .user-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .user-block {
+    width: 300px;
+    justify-content: space-around;
+    padding: 10px;
+  }
 }

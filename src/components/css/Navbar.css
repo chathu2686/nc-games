@@ -30,11 +30,12 @@ form {
 .users-link {
   color: whitesmoke;
   font-size: xx-large;
+  font-weight: bolder;
   text-decoration: none;
 }
 
 label {
-  font-weight: bold;
+  font-weight: bolder;
   font-size: large;
 }
 
@@ -44,4 +45,5 @@ label {
 
 .logged-in {
   margin: 0;
+  font-weight: bolder;
 }

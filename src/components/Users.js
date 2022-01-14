@@ -24,7 +24,7 @@ const Users = () => {
       });
   }, []);
   return (
-    <section>
+    <section className="user-list">
       {userList.map((user) => {
         return (
           <div key={user.username} className="user-block">
@@ -32,12 +32,7 @@ const Users = () => {
             <br />
             UserName: {user.username}
             <br />
-            <img
-              src={user.avatar_url}
-              alt="user"
-              width="200px"
-              height="100px"
-            />
+            <img src={user.avatar_url} alt="user" className="user-avatar" />
           </div>
         );
       })}
