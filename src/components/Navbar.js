@@ -20,7 +20,10 @@ const Navbar = () => {
   return (
     <div className="nav-bar">
       <Link className="review-link" to="/reviews">
-        Reviews
+        Home
+      </Link>
+      <Link className="review-link" to="/categories">
+        Categories
       </Link>
       <Link className="users-link" to="/users">
         Users

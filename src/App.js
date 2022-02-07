@@ -7,6 +7,7 @@ import Nopath from "./components/Nopath";
 import Loader from "./components/Loader";
 import Error from "./components/Error";
 import "./App.css";
+import Categories from "./components/Categories";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Reviews />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/reviews/:review_id" element={<Review />} />
+          <Route path="/categories" element={<Categories />} />
           <Route path="/users" element={<Users />} />
           {/* <Route
             path="/reviews/:review_id/comments"

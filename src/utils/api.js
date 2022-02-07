@@ -40,6 +40,17 @@ export const getCategories = () => {
   });
 };
 
+export const postCategory = (slug, description) => {
+  return gameDataApi
+    .post("/categories", {
+      slug: slug,
+      description: description,
+    })
+    .then((res) => {
+      console.log(res);
+    });
+};
+
 export const updateReviewVotes = (review_id, votes) => {
   return gameDataApi
     .patch(`/reviews/${review_id}`, { inc_votes: votes })
